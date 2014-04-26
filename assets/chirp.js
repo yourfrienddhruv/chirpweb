@@ -43,4 +43,24 @@
     return oscillator.stop(now + (beepLength / 1000 * (chirp.length + 1)));
   };
 
+  window.chirp_url = function(url) {
+    var body, xhr;
+    xhr = new XMLHttpRequest();
+    body = JSON.stringify({
+      'url': url,
+      'mimetype': 'text/x-url'
+    });
+    xhr.open('POST', '//chirpgw.appspot.com', true);
+    xhr.overrideMimeType('application/javascript');
+    xhr.onreadystatechange = function() {
+      var longcode, response;
+      if (this.readyState === 4) {
+        response = JSON.parse(xhr.responseText);
+        longcode = response['longcode'];
+        return window.chirp(longcode);
+      }
+    };
+    return xhr.send(body);
+  };
+
 }).call(this);
