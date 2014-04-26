@@ -59,3 +59,17 @@ window.chirp = (message, ecc) ->
     oscillator.start now
     # And don't forget to stop
     oscillator.stop now + (beepLength / 1000 * (chirp.length + 1))
+
+window.chirp_url = (url) ->
+    xhr = new XMLHttpRequest()
+    body = JSON.stringify({'url': url, 'mimetype': 'text/x-url'})
+    xhr.open('POST', '//chirpgw.appspot.com', true)
+    xhr.overrideMimeType('application/javascript')
+
+    xhr.onreadystatechange = ->
+        if this.readyState == 4
+            response = JSON.parse(xhr.responseText)
+            longcode = response['longcode']
+            window.chirp(longcode)
+
+    xhr.send(body)
