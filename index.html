@@ -41,7 +41,8 @@
     <script src="assets/chirp.js"></script>
     <h1>Data transmission using WebAudio</h1>
     <div class="main">
-        <button class="chirp" onclick="chirp_url(location.href)">♮<span>js</span></button>
+        <button class="chirp" onclick="chirp_url(location.href)">♮<span>Chirp this page</span></button>
+        <p>Save a bookmarklet: <a href="javascript:(function()%7Bfunction%20callback()%7Bwindow.chirp_url(location.href)%7Dvar%20s%3Ddocument.createElement(%22script%22)%3Bs.src%3D%22%2F%2Fmoreati.github.com%2Fchirpweb%2Fassets%2Fchirp.js%22%3Bif(s.addEventListener)%7Bs.addEventListener(%22load%22%2Ccallback%2Cfalse)%7Delse%20if(s.readyState)%7Bs.onreadystatechange%3Dcallback%7Ddocument.body.appendChild(s)%3B%7D)()">Chirp</a></p>
         <p>Don't forget to check out <a href="http://chirp.io">chirp.io</a></p>
     </div>
 </body>
