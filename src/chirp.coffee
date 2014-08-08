@@ -43,7 +43,7 @@ window.chirp = (message, ecc) ->
     oscillator = context.createOscillator()
     oscillator.type = 0 # sine wave
 
-    gainNode = context.createGainNode()
+    gainNode = context.createGain()
     gainNode.gain.value = 0.5
 
     oscillator.connect gainNode
